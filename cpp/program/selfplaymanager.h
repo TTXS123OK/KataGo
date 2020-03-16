@@ -1,11 +1,11 @@
 #ifndef PROGRAM_SELFPLAYMANAGER_H_
 #define PROGRAM_SELFPLAYMANAGER_H_
 
-#include "core/threadsafequeue.h"
-#include "core/timer.h"
-#include "dataio/sgf.h"
-#include "dataio/trainingwrite.h"
-#include "neuralnet/nneval.h"
+#include "../core/threadsafequeue.h"
+#include "../core/timer.h"
+#include "../dataio/sgf.h"
+#include "../dataio/trainingwrite.h"
+#include "../neuralnet/nneval.h"
 
 class SelfplayManager {
  public:
