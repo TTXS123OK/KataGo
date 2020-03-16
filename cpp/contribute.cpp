@@ -9,11 +9,24 @@
 #include "program/play.h"
 #include "program/setup.h"
 #include "program/selfplaymanager.h"
-#include "distributed/client.h"
 #include "main.h"
 
 #define TCLAP_NAMESTARTSTRING "-" //Use single dashes for all flags
 #include <tclap/CmdLine.h>
+
+#ifndef BUILD_DISTRIBUTED
+
+int MainCmds::contribute(int argc, const char* const* argv) {
+  (void)argc;
+  (void)argv;
+  std::cout << "This version of KataGo was NOT compiled with support for distributed training." << std::endl;
+  std::cout << "Compile with -DBUILD_DISTRIBUTED=1 in CMake, and/or see notes at https://github.com/lightvector/KataGo#compiling-katago" << std::endl;
+  return 0;
+}
+
+#else
+
+#include "distributed/client.h"
 
 #include <sstream>
 #include <chrono>
@@ -400,3 +413,5 @@ int MainCmds::contribute(int argc, const char* const* argv) {
   logger.write("All cleaned up, quitting");
   return 0;
 }
+
+#endif //BUILD_DISTRIBUTED
